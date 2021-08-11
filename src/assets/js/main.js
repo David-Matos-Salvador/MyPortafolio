@@ -92,14 +92,35 @@ modalBtns.forEach((modalBtn, i) => {
 modalCloses.forEach((modalClose) => {
     modalClose.addEventListener('click', () => {
         modalViews.forEach((modalView) => {
+            console.log("close")
             modalView.classList.remove('active-modal');
         })
     })
 })
 
+/*==================== TEMPLATE  ====================*/
+
+const imgContains = document.querySelectorAll('.portfolio__img'),
+    modalShow = document.querySelector('#modal-show-image'),
+    modalImg=document.querySelector('#modal-img');
+
+imgContains.forEach((imgTag, i, parent) => {
+    imgTag.addEventListener('click', () => {
+        modalShow.classList.add('active-modal');
+        const srcModal=imgTag.getAttribute('data-src-img')       
+        modalImg.src=imgTag.src;
+    });
+});
+
+modalShow.addEventListener('click',()=>{
+    modalShow.classList.remove('active-modal');
+})
+
+
+
 /*==================== PORTFOLIO SWIPER  ====================*/
 let swiper = new Swiper('.portfolio__container', {
-    
+
     cssMode: true,
     loop: true,
     navigation: {
@@ -120,7 +141,7 @@ let swiper = new Swiper('.portfolio__container', {
 let swiperTestimonial = new Swiper('.testimonial__container', {
     loop: true,
     grabCursor: true,
-    spaceBetween:48,
+    spaceBetween: 48,
     pagination: {
         el: '.swiper-pagination',
         clickable: true,
@@ -196,17 +217,17 @@ if (selectedTheme) {
 // Activate / desactivate the theme manually with the button
 themeButton.addEventListener('click', () => {
 
-    console.log("getCurrenTheme",getCurrenTheme());
-    console.log("getCurrectIcon",getCurrectIcon());
-    console.log("darkTheme",darkTheme);
-    console.log("iconTheme",iconTheme)
-    
+    console.log("getCurrenTheme", getCurrenTheme());
+    console.log("getCurrectIcon", getCurrectIcon());
+    console.log("darkTheme", darkTheme);
+    console.log("iconTheme", iconTheme)
+
     // Add or remove the dark / icon theme
     document.body.classList.toggle(darkTheme);
     themeButton.classList.toggle(iconTheme);
-    
+
     // We save the theme and the current icon that the user chose
-    localStorage.setItem('selected-theme',getCurrenTheme());
-    localStorage.setItem('selected-icon',getCurrectIcon());
+    localStorage.setItem('selected-theme', getCurrenTheme());
+    localStorage.setItem('selected-icon', getCurrectIcon());
 })
 
