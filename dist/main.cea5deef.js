@@ -18435,17 +18435,169 @@ if (selectedTheme) {
 
 
 themeButton.addEventListener('click', function () {
-  console.log("getCurrenTheme", getCurrenTheme());
-  console.log("getCurrectIcon", getCurrectIcon());
-  console.log("darkTheme", darkTheme);
-  console.log("iconTheme", iconTheme); // Add or remove the dark / icon theme
-
+  // console.log("getCurrenTheme", getCurrenTheme());
+  // console.log("getCurrectIcon", getCurrectIcon());
+  // console.log("darkTheme", darkTheme);
+  // console.log("iconTheme", iconTheme)
+  // Add or remove the dark / icon theme
   document.body.classList.toggle(darkTheme);
   themeButton.classList.toggle(iconTheme); // We save the theme and the current icon that the user chose
 
   localStorage.setItem('selected-theme', getCurrenTheme());
   localStorage.setItem('selected-icon', getCurrectIcon());
+}); // Post a user
+///Get values from Form with vanilla js
+
+/*const form = document.querySelector('.contact__form')
+const formularios =document.forms;
+
+console.log(formularios[0]);
+console.log(formularios['contactar'])
+
+function printDom(node,prefix) {    
+    console.log(`${prefix} ${node.nodeName} : ${node.nodeType} -> ${node.nodeValue}`);
+    for (let index = 0; index < node.childNodes.length; index++) {
+        printDom(node.childNodes[index],`${prefix} \t`)    
+    }
+}
+printDom(formularios['contactar'],"");
+*/
+
+/*==================== SEND EMAIL MESSAGE ====================*/
+
+var name = document.getElementsByName('name'),
+    email = document.getElementsByName('email'),
+    project = document.getElementsByName('project'),
+    message = document.getElementsByName('message'),
+    bntSendMessage = document.getElementById('sendMessage');
+
+function checkInputs() {
+  //get the values from Inputs
+  var nameValue = name[0].value.trim();
+  var emailValue = email[0].value.trim();
+  var projectValue = project[0].value.trim();
+  var messageValue = message[0].value.trim();
+
+  if (nameValue === '') {
+    //show Error
+    //add Error  class
+    setErrorFor(name[0], 'Name cannot be blank.');
+  } else {
+    setSuccessFor(name[0]);
+
+    if (emailValue === '') {
+      setErrorFor(email[0], 'Email cannot be blank.');
+    } else if (!isEmail(emailValue)) {
+      setErrorFor(email[0], 'Email is not valid.');
+    } else {
+      setSuccessFor(email[0]);
+
+      if (projectValue === '') {
+        setErrorFor(project[0], 'Projecto or Subject cannot be blank.');
+      } else {
+        setSuccessFor(project[0]);
+
+        if (messageValue === '') {
+          setErrorFor(message[0], 'Projecto or Subject cannot be blank.');
+        } else {
+          setSuccessFor(message[0]); //desabilitamos el bottom
+
+          bntSendMessage.disabled = true;
+          var MailResquest = {
+            name: nameValue,
+            email: emailValue,
+            project: projectValue,
+            message: messageValue
+          };
+          var url = "http://localhost:8080/server/api/sendemail"; //send mail message
+          // //sendMail(JSON.stringify(MailResquest));
+
+          makeRequest("POST", url, JSON.stringify(MailResquest)).then(function (rpta) {
+            bntSendMessage.disabled = false;
+            console.log(rpta);
+          }, function (error) {
+            bntSendMessage.disabled = false;
+            console.log(error);
+          });
+        }
+      }
+    }
+  }
+}
+
+function setErrorFor(input, message) {
+  var contacContent = input.parentElement;
+  var small = contacContent.querySelector('small'); //addError message inside small
+
+  small.innerText = message;
+}
+
+function setSuccessFor(input) {
+  var contacContent = input.parentElement;
+  var small = contacContent.querySelector('small'); //addError message inside small
+
+  small.innerText = '';
+}
+
+function isEmail(email) {
+  var re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+  return re.test(String(email).toLowerCase());
+}
+
+bntSendMessage.addEventListener('click', function () {
+  checkInputs();
 });
+
+function makeRequest(method, url) {
+  var objcReq = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : null;
+  return new Promise(function (resolve, reject) {
+    var xhr = new XMLHttpRequest();
+    xhr.open(method, url, true);
+    xhr.setRequestHeader('Content-type', 'application/json; charset=utf-8');
+
+    xhr.onload = function () {
+      if (this.status >= 200 && this.status < 300) {
+        resolve(xhr.response);
+      } else {
+        reject({
+          status: this.status,
+          statusText: xhr.statusText
+        });
+      }
+    };
+
+    xhr.onerror = function () {
+      reject({
+        status: this.status,
+        statusText: xhr.statusText
+      });
+    };
+
+    if (method === 'POST') {
+      xhr.send(objcReq);
+    } else {
+      xhr.send();
+    }
+  });
+} // function sendMail(jsonObject) {
+//     console.log(jsonObject)
+//     const url = "http://localhost:8080/server/api/sendemail";
+//     const xhr = new XMLHttpRequest();
+//     xhr.open("POST", url, true);
+//     xhr.setRequestHeader('Content-type', 'application/json; charset=utf-8');
+//     xhr.onload = function () {
+//         if (xhr.readyState == 4 && xhr.status == "201" || xhr.status == "200") {
+//             console.log("esta es la respuesta positiva del servidor");
+//             console.log(xhr.responseText);
+//             console.log(xhr.responseText);
+//         } else {
+//             console.log("esta es la respuesta negativa del servidor");
+//             console.log(xhr.responseText);
+//             console.log(xhr.responseText);
+//         }
+//     }
+//     xhr.send(jsonObject);
+// }
 },{"@splidejs/splide":"../node_modules/@splidejs/splide/dist/js/splide.esm.js","swiper/bundle":"../node_modules/swiper/swiper-bundle.esm.js"}],"C:/Users/pc/AppData/Roaming/npm/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
@@ -18474,7 +18626,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "49888" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "56329" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
