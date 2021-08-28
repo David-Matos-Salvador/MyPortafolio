@@ -304,7 +304,7 @@ const name = document.getElementsByName('name'),
                         project: projectValue,
                         message: messageValue
                     };
-                    const url = "http://localhost:8080/server/api/sendemail";
+                    const url = "https://server-mail-spring.herokuapp.com/server/api/sendemail";
                     //send mail message
                     // //sendMail(JSON.stringify(MailResquest));
                     makeRequest("POST", url, JSON.stringify(MailResquest)).then(rpta=>{
