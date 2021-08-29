@@ -2,11 +2,11 @@
   "name": "Create-my-Portafolio",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "source": "./src/index.html",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "parcel serve ./src/index.html",
-    "build": "parcel build ./src/index.html",
+    "start": "parcel serve ",
+    "build": "parcel build ",
     "deploy":"gh-pages -d dist"
   },
   "keywords": [],
