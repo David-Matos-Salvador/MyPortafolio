@@ -6,14 +6,17 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "parcel serve ./src/index.html",
-    "build": "parcel build ./src/index.html"
+    "build": "parcel build ./src/index.html",
+    "deploy":"gh-pages -d dist"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
+  "homepage": "https://david-matos-salvador.github.io/MyPortafolio",
   "dependencies": {
     "@splidejs/splide": "^2.4.21",
     "dotenv": "^10.0.0",
+    "gh-pages": "^3.2.3",
     "medium-zoom": "^1.0.6",
     "swiper": "^6.8.1"
   },
