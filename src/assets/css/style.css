@@ -337,6 +337,7 @@ img {
 
 /*==================== BUTTONS ====================*/
 .button {
+    outline: none;
     display: inline-block;
     background-color: var(--first-color);
     color: var(--first-color-alt);
@@ -346,6 +347,7 @@ img {
     transition: background 0.4s, color 0.4s;
     cursor: pointer;
     font-family: 'Poppins';
+    border: none;
 }
 .button:hover:enabled {
     background-color: var(--first-color-alt);
